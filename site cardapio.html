@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Pedido de Pizza</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Faça seu pedido de pizza</h1>
+    <form id="pedidoForm">
+        <label for="sabor">Escolha o sabor:</label>
+        <select id="sabor" name="sabor">
+            <option value="margherita">Margherita</option>
+            <option value="pepperoni">Pepperoni</option>
+            <option value="quatro-queijos">Quatro Queijos</option>
+            <option value="calabresa">Calabresa</option>
+            <option value="frango-catupiry">Frango com Catupiry</option>
+            <option value="portuguesa">Portuguesa</option>
+        </select>
+
+        <label for="tamanho">Escolha o tamanho:</label>
+        <select id="tamanho" name="tamanho">
+            <option value="pequena">Pequena</option>
+            <option value="média">Média</option>
+            <option value="grande">Grande</option>
+        </select>
+
+        <button type="submit">Fazer Pedido</button>
+    </form>
+
+    <div id="mensagem" class="mensagem"></div>
+
+    <script src="script.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+select, button {
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.mensagem {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+    </style>
+</body>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("pedidoForm");
+    const mensagemDiv = document.getElementById("mensagem");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const sabor = document.getElementById("sabor").value;
+        const tamanho = document.getElementById("tamanho").value;
+
+        const mensagem = `Pedido recebido: Uma pizza de ${sabor} no tamanho ${tamanho}. Obrigado por escolher a nossa pizzaria!`;
+        mensagemDiv.textContent = mensagem;
+
+        // Limpar o formulário após o envio
+        form.reset();
+
+        // Exibir mensagem de confirmação por alguns segundos
+        setTimeout(function() {
+            mensagemDiv.textContent = "";
+        }, 5000); // 5000 milissegundos = 5 segundos
+    });
+});
+
+</script>
